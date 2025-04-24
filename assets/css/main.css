@@ -2384,7 +2384,8 @@ input, select, textarea {
 			margin: 0 0 1.6875em 0;
 			padding: 0.35em 0 0 3.5em;
 			position: relative;
-			vertical-align: top;
+			vertical-align: top; 
+			font-family: 'Font Awesome 5 Free'!important;
 			width: 48%;
 		}
 
@@ -2398,7 +2399,7 @@ input, select, textarea {
 				line-height: 1;
 				text-transform: none !important;
 				font-family: 'Font Awesome 6 Free';
-				font-weight: 400;
+				font-weight: 600;
 			}
 
 			ul.feature-icons li:before {
