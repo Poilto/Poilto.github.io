@@ -157,12 +157,33 @@
 									<p>Проведенный анализ источников выявил три ключевые проблемы:
 Технические сложности: нестабильная работа сервисов в регионах ("Электронные госуслуги: проблемы реализации")
 Дефицит цифровой грамотности: особенно среди старшего поколения (данные ВЦИОМ)
-Низкий уровень доверия: опасения граждан относительно безопасности персональных данных (экспертные оценки PRNews)</p>
-									<div class="features">
-										
-										
-									</div>
-								</div>
+Низкий уровень доверия: опасения граждан относительно безопасности персональных данных (экспертные оценки PRNews)</p>		
+								<div class="user-poll">
+    <h3>А что думаете вы?</h3>
+    <form id="digitalServicesPoll">
+        <div class="poll-question">
+            <p>Как часто вы сталкиваетесь с проблемами при использовании госуслуг?</p>
+            <label><input type="radio" name="frequency" value="often"> Часто</label>
+            <label><input type="radio" name="frequency" value="sometimes"> Иногда</label>
+            <label><input type="radio" name="frequency" value="rarely"> Редко</label>
+            <label><input type="radio" name="frequency" value="never"> Никогда</label>
+        </div>
+        <button type="submit" class="poll-submit">Отправить</button>
+    </form>
+    <div class="poll-results" style="display: none;">
+        <h4>Результаты опроса:</h4>
+        <div class="result-chart" id="pollChart"></div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('digitalServicesPoll').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Здесь код отправки данных
+        document.querySelector('.poll-results').style.display = 'block';
+        // Инициализация диаграммы результатов
+    });
+</script>
 							</section>
 						<section id="Five">
 								<div class="container">
