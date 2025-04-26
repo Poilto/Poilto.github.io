@@ -3320,6 +3320,7 @@ input, select, textarea {
         border-radius: 8px;
         margin: 40px 0;
         font-family: Arial, sans-serif;
+        max-width: 600px;
     }
     .poll-question {
         margin-bottom: 20px;
@@ -3363,7 +3364,7 @@ input, select, textarea {
         margin-top: 15px;
         max-height: 300px;
     }
-    #userChoice {
+    #userChoice, #totalVotes {
         font-weight: bold;
         color: #3498db;
     }
