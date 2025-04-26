@@ -3332,7 +3332,7 @@ input, select, textarea {
     .comparison-header {
         font-weight: bold;
         background: #3498db;
-        color: white;
+        color: #888;
     }
     .comparison-header, .comparison-row {
         display: contents;
