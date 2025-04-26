@@ -3313,19 +3313,32 @@ input, select, textarea {
 			}
 
 	}
- .user-poll {
+
+    .user-poll {
         background: #f8f9fa;
         padding: 25px;
         border-radius: 8px;
         margin: 40px 0;
+        font-family: Arial, sans-serif;
     }
     .poll-question {
         margin-bottom: 20px;
     }
+    .poll-question p {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
     .poll-question label {
         display: block;
         margin: 8px 0;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 4px;
         cursor: pointer;
+        transition: background 0.3s;
+    }
+    .poll-question label:hover {
+        background: #e8f4fc;
     }
     .poll-submit {
         background: #3498db;
@@ -3334,7 +3347,23 @@ input, select, textarea {
         padding: 10px 20px;
         border-radius: 4px;
         cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
     }
     .poll-submit:hover {
         background: #2980b9;
+    }
+    .poll-results {
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+    }
+    #pollChart {
+        margin-top: 15px;
+        max-height: 300px;
+    }
+    #userChoice {
+        font-weight: bold;
+        color: #3498db;
     }
