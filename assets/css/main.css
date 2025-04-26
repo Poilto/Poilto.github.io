@@ -2383,7 +2383,7 @@ input, select, textarea {
 			padding: 0.35em 0 0 3.5em;
 			position: relative;
 			vertical-align: top; 
-			font-family: 'Font Awesome 5 Free'!important;
+			font-family:  "Lato", sans-serif;
 			width: 48%;
 		}
 
