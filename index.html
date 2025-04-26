@@ -173,12 +173,24 @@
     <div class="poll-results" style="display: none;">
         <h4>Результаты опроса:</h4>
         <p>Ваш выбор: <span id="userChoice"></span></p>
+        <p>Всего проголосовало: <span id="totalVotes"></span></p>
         <div class="result-chart" id="pollChart"></div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    // Инициализация хранилища результатов
+    if (!localStorage.getItem('pollResults')) {
+        localStorage.setItem('pollResults', JSON.stringify({
+            often: 0,
+            sometimes: 0,
+            rarely: 0,
+            never: 0,
+            total: 0
+        }));
+    }
+
     document.getElementById('digitalServicesPoll').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -186,21 +198,50 @@
         const selectedValue = document.querySelector('input[name="frequency"]:checked').value;
         const choiceText = document.querySelector('input[name="frequency"]:checked').nextSibling.textContent.trim();
         
-        // Показываем выбор пользователя
-        document.getElementById('userChoice').textContent = choiceText;
+        // Обновляем результаты
+        const results = JSON.parse(localStorage.getItem('pollResults'));
+        results[selectedValue]++;
+        results.total++;
+        localStorage.setItem('pollResults', JSON.stringify(results));
         
-        // Показываем блок результатов
-        document.querySelector('.poll-results').style.display = 'block';
+        // Показываем результаты
+        showPollResults(results, choiceText);
+    });
+
+    // Функция отображения результатов
+    function showPollResults(results, userChoice) {
+        document.getElementById('userChoice').textContent = userChoice;
+        document.getElementById('totalVotes').textContent = results.total;
         
-        // Инициализация диаграммы (пример данных)
+        // Рассчитываем проценты
+        const total = results.total || 1; // Чтобы избежать деления на 0
+        const percentages = {
+            often: Math.round((results.often / total) * 100),
+            sometimes: Math.round((results.sometimes / total) * 100),
+            rarely: Math.round((results.rarely / total) * 100),
+            never: Math.round((results.never / total) * 100)
+        };
+        
+        // Создаем/обновляем диаграмму
         const ctx = document.getElementById('pollChart').getContext('2d');
-        new Chart(ctx, {
+        
+        // Удаляем предыдущую диаграмму если есть
+        if (window.pollChart) {
+            window.pollChart.destroy();
+        }
+        
+        window.pollChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Часто', 'Иногда', 'Редко', 'Никогда'],
                 datasets: [{
-                    label: 'Результаты опроса (%)',
-                    data: [35, 40, 15, 10], // Примерные данные
+                    label: 'Процент голосов',
+                    data: [
+                        percentages.often,
+                        percentages.sometimes,
+                        percentages.rarely,
+                        percentages.never
+                    ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)',
                         'rgba(54, 162, 235, 0.7)',
@@ -217,16 +258,93 @@
                 }]
             },
             options: {
+                responsive: true,
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 100
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Процент голосов'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Варианты ответа'
+                        }
                     }
                 }
             }
         });
-    });
+        
+        // Показываем блок результатов
+        document.querySelector('.poll-results').style.display = 'block';
+    }
+
+    // Показываем текущие результаты при загрузке страницы
+    const savedResults = JSON.parse(localStorage.getItem('pollResults'));
+    if (savedResults.total > 0) {
+        showPollResults(savedResults, 'Еще не выбрано');
+    }
 </script>
+
+<style>
+    .user-poll {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 8px;
+        margin: 40px 0;
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+    }
+    .poll-question {
+        margin-bottom: 20px;
+    }
+    .poll-question p {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .poll-question label {
+        display: block;
+        margin: 8px 0;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .poll-question label:hover {
+        background: #e8f4fc;
+    }
+    .poll-submit {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+    .poll-submit:hover {
+        background: #2980b9;
+    }
+    .poll-results {
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+    }
+    #pollChart {
+        margin-top: 15px;
+        max-height: 300px;
+    }
+    #userChoice, #totalVotes {
+        font-weight: bold;
+        color: #3498db;
+    }
+</style>
 							</section>
 						<section id="Five">
 								<div class="container">
