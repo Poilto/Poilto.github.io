@@ -161,13 +161,68 @@
 									<h3>Основная информация</h3>
 									<p>Бу бу бу</p>
 									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
+<article>
+    <div id="chart-container" style="width: 715px; margin: 0 auto;">
+        <canvas id="digitalServicesChart"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('digitalServicesChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Проблемы с безопасностью данных',
+                        'Невозможность оценить качество',
+                        'Трудности при отсутствии интернета',
+                        'Сложности возврата товара',
+                        'Ограниченное личное общение',
+                        'Сложности освоения технологий',
+                        'Нет недостатков',
+                        'Другое',
+                        'Затрудняюсь ответить'
+                    ],
+                    datasets: [{
+                        label: 'Процент опрошенных',
+                        data: [46, 40, 40, 21, 12, 12, 5, 5, 12],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 50,
+                            title: {
+                                display: true,
+                                text: 'Процент опрошенных'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Недостатки цифровых услуг по сравнению с традиционными',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
 											<div class="inner">
