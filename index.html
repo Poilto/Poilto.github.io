@@ -448,27 +448,104 @@
 					<div class="container">
 						<h3>Основная информация</h3>
 						<p>Бу бу бу</p>
-						<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
+						<div class="idea-submission">
+  <h2>Предложите свою идею для цифровизации</h2>
+  <form id="ideaForm">
+    <div class="form-group">
+      <label for="ideaTitle">Название идеи*</label>
+      <input type="text" id="ideaTitle" required placeholder="Кратко опишите суть предложения">
+    </div>
+    
+    <div class="form-group">
+      <label for="ideaCategory">Категория*</label>
+      <select id="ideaCategory" required>
+        <option value="">Выберите категорию</option>
+        <option value="education">Цифровое образование</option>
+        <option value="services">Госуслуги</option>
+        <option value="infrastructure">Инфраструктура</option>
+        <option value="other">Другое</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="ideaDescription">Подробное описание*</label>
+      <textarea id="ideaDescription" required rows="5" 
+                placeholder="Опишите проблему, решение, ожидаемый эффект"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="ideaBenefits">Ожидаемые преимущества</label>
+      <textarea id="ideaBenefits" rows="3" 
+                placeholder="Какие проблемы решит, кто получит выгоду"></textarea>
+    </div>
+    
+    <div class="form-footer">
+      <button type="submit" class="submit-btn">Отправить на модерацию</button>
+      <p class="form-note">Все идеи проходят проверку перед публикацией</p>
+    </div>
+  </form>
+</div>
+
+<style>
+.idea-submission {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.form-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+.submit-btn {
+  background: #2ecc71;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.submit-btn:hover {
+  background: #27ae60;
+}
+.form-note {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+</style>
+
+<script>
+document.getElementById('ideaForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Здесь код отправки данных на сервер
+  alert('Ваша идея отправлена на модерацию! Спасибо за участие.');
+  this.reset();
+});
+</script>
 										</article>
 									</div>
 								</div>
