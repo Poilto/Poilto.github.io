@@ -3313,7 +3313,7 @@ input, select, textarea {
 			}
 
 	}
-
+		/* Dop */
     .user-poll {
         background: #f8f9fa;
         padding: 25px;
@@ -3368,3 +3368,39 @@ input, select, textarea {
         font-weight: bold;
         color: #3498db;
     }
+.comparison-section {
+        margin: 40px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    .comparison-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .comparison-header {
+        font-weight: bold;
+        background: #3498db;
+        color: white;
+    }
+    .comparison-header, .comparison-row {
+        display: contents;
+    }
+    .comparison-header > div, .comparison-row > div {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .criteria-col {
+        background: #f1f1f1;
+        font-weight: bold;
+    }
+    .good { color: #27ae60; }
+    .average { color: #f39c12; }
+    .bad { color: #e74c3c; }
